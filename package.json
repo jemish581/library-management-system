@@ -11,8 +11,27 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "compile": "tsc && node build/index.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\""
+    "start-server": "npm run build-ts && node build/index.js",
+    "watch": "nodemon -e ts -w ./ -x npm run start-server",
+    "build-ts": "tsc",
+    "build": "npm run build-ts",
+    "serve": "node build/server.js",
+    "start": "npm run serve",
+    "test": "jest -c ./jest.unit.json --watchAll",
+    "test:coverage": "jest --coverage -c ./jest.unit.json",
+    "fix": "tslint --fix --project tsconfig.json 'src/**/*.ts'",
+    "tslint": "tslint --project tsconfig.json",
+    "intend": "prettier 'src/**/*.ts' --config .prettierrc.json --write",
+    "start:dev": "node build/server.js",
+    "start:local": "ENVIRONMENT=local node build/server.js",
+    "start:development": "ENVIRONMENT=development node build/server.js",
+    "start:development2": "ENVIRONMENT=development2 node build/server.js",
+    "start:development3": "ENVIRONMENT=development3 node build/server.js",
+    "start:preprod": " ENVIRONMENT=preprod node build/server.js",
+    "start:preprod2": " ENVIRONMENT=preprod2 node build/server.js",
+    "start:production": "ENVIRONMENT=production node build/server.js",
+    "start:qa": "ENVIRONMENT=qa node build/server.js",
+    "start:qa2": "ENVIRONMENT=qa2 node build/server.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",

@@ -4,7 +4,6 @@ import Jwt from "jsonwebtoken";
 const auth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const authorization = (req.headers as any).authorization;
-    console.log(`req.headers : `, req.baseUrl);
     if (req.originalUrl === "/login") {
       next();
       return;
@@ -36,11 +35,9 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       ].includes(req.originalUrl)
     ) {
       return res.status(401).json({
-        message: "Unauthorized access found !",
+        message: "╭∩╮（︶︿︶）╭∩╮ Unauthorized access found ╭∩╮（︶︿︶）╭∩╮",
       });
     }
-
-    console.log(`decoded--------->`, decoded);
     next();
   } catch (error) {
     console.log(`auth catch error`, error);

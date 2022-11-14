@@ -15,36 +15,36 @@ import auth from "../middlewares/auth";
 const router = express.Router();
 
 //-----------------------------------Add---New---Books------------------------------------
-router.post("/add_New_Book", addBookController);
+router.post("/addNewBook", auth, addBookController);
 
 //--------------------------Get---All---Books---------------------------------------------
-router.get("/get_all_Books", auth, getAllBooksController);
+router.get("/getAllBooks", auth, getAllBooksController);
 
 //---------------------------Available---Books---------------------------------------------
-router.get("/available_books", auth, getAvailableBooksController);
+router.get("/availableBooks", auth, getAvailableBooksController);
 
 //---------------------------Issue ---Books------------------------------------------------
-router.post("/issue_book", auth, issueBook);
+router.post("/issueBook", auth, issueBook);
 
 //---------------------------return---Books---------------------------------------------
-router.post("/return_book", auth, returnBook);
+router.post("/returnBook", auth, returnBook);
 
 //---------------------------user---Ragister------------------------------------------------
-router.post("/create_new_user", RagisterNewUser);
+router.post("/createNewUser", RagisterNewUser);
 
 //-----------------------------get-all-issuedbooks-----------------------------------------
-router.get("/get_issued_book", getBookissuedData);
+router.get("/getIssuedBook", auth, getBookissuedData);
 
 //-----------------------------get-user-issuedbooks-----------------------------------------
-router.get("/get_user_issued_book", auth, getUserissuedData);
+router.get("/getUserIssuedBook", auth, getUserissuedData);
 
 //---------------------removeBook----------------------------------------------------------
-router.delete("/remove_book", removeBook);
+router.delete("/removeBook", auth, removeBook);
 
 //---------------------removeUser----------------------------------------------
 
-router.delete("/remove_user", removeUser);
+router.delete("/removeUser", auth, removeUser);
 
 //------------------------login user---------------------------------------------
-router.get("/login", loginUser);
+router.get("/login", auth, loginUser);
 export default router;

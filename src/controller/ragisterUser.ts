@@ -1,4 +1,4 @@
-import { Express, Request, Response } from "express";
+import { Request, Response } from "express";
 import userDataModel from "../model/usermodel";
 function onlyNumbers(str: any) {
   return /^[0-9]+$/.test(str);
@@ -10,6 +10,7 @@ type userDataObj = {
   email: String;
   address: String;
   password: String;
+  role: any;
 };
 
 const RagisterNewUser = async (req: Request, res: Response) => {
@@ -37,8 +38,19 @@ const RagisterNewUser = async (req: Request, res: Response) => {
     }
     const mobileValidation = onlyNumbers(inputperameter.mobile);
     if (!mobileValidation) {
-      res.status(400).send(`mobile number is not valid`);
+      return res.status(400).send(`mobile number is not valid`);
     }
+    if (!inputperameter.role) {
+      return res.status(400).send("please enter role!");
+    }
+
+    const admin = "admin";
+    const user = "user";
+
+    if (![admin, user].includes(inputperameter.role)) {
+      return res.send(`please enter the right role`);
+    }
+
     const addUserData = await userDataModel.create(inputperameter);
     res.status(201).json({ user: addUserData });
   } catch (error) {

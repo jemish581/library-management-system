@@ -19,5 +19,5 @@ mongoose
     "mongodb+srv://jemish0581:Shivay99@cluster0.5ijjgyt.mongodb.net/Books?retryWrites=true&w=majority"
   )
   .then(() => {
-    console.warn("Database is connected successfully...");
+    console.warn("Database is connected successfully ( ͡ᵔ ͜ʖ ͡ᵔ )");
   });

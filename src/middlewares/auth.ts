@@ -36,11 +36,9 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
       ].includes(req.originalUrl)
     ) {
       return res.status(401).json({
-        message: "Unauthorized access found !",
+        message: "╭∩╮（︶︿︶）╭∩╮ Unauthorized access found ╭∩╮（︶︿︶）╭∩╮",
       });
     }
-
-    console.log(`decoded--------->`, decoded);
     next();
   } catch (error) {
     console.log(`auth catch error`, error);

@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
 app.listen(port, () => {
-  console.log(`server was ranning on ------>  http://localhost:${port}`);
+  console.log(`🚀 server was running  ▄︻̷̿┻̿═━一 http://localhost:${port}`);
 });
 
 mongoose.set("debug", true);

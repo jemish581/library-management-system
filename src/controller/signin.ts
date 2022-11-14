@@ -27,8 +27,9 @@ const loginUser = async (req: Request, res: Response) => {
       return res.status(400).send(`incorrect password! ✘`);
     }
     const token = Jwt.sign(
-      { mobile: findUser.mobile, id: findUser._id },
-      "jabcdeefghijmklmnoipqrstsuvwh"
+      { mobile: findUser.mobile, id: findUser._id, role: findUser.role },
+      "jabcdeefghijmklmnoipqrstsuvwh",
+      { expiresIn: "10h" }
     );
     res.json({ message: `login succsess ✓`, user: findUser, token: token });
   } catch (error) {

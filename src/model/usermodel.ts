@@ -28,6 +28,13 @@ const userDataModel = new mongoose.Schema({
   password: {
     type: String,
   },
+
+  role: {
+    type: String,
+    require: true,
+    default: "user",
+    enum: ["user", "admin"],
+  },
 });
 
 export default mongoose.model("user", userDataModel);

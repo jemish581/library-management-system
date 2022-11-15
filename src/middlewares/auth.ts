@@ -32,6 +32,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
         "/returnBook",
         "/removeBook",
         "/removeUser",
+        "/getAllUser",
       ].includes(req.originalUrl)
     ) {
       return res.status(401).json({

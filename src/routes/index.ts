@@ -11,6 +11,7 @@ import removeBook from "../controller/removeBook";
 import removeUser from "../controller/getAllUser";
 import loginUser from "../controller/signin";
 import auth from "../middlewares/auth";
+import getAllUser from "../controller/getAllUser";
 
 const router = express.Router();
 
@@ -45,6 +46,9 @@ router.delete("/removeBook", auth, removeBook);
 
 router.delete("/removeUser", auth, removeUser);
 
-//------------------------login user---------------------------------------------
+//------------------------login user--------------------------------------------
 router.get("/login", auth, loginUser);
+
+//------------------------getAllUser-------------------------------------------
+router.get("/getAllUser", auth, getAllUser);
 export default router;
